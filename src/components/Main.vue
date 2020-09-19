@@ -2,7 +2,7 @@
     <b-container class="bv-example-row">
         <b-row>
             <b-col>
-                <graph :radius="Number(point.r)"></graph>
+                <graph :radius="Number(point.r)" ref="graph"></graph>
             </b-col>
             <b-col>
                 <b-form @submit="onSubmit">
@@ -90,6 +90,7 @@ export default {
         onSubmit(evt) {
             evt.preventDefault();
             console.log(this.point);
+            this.$refs.graph.sendPoint(this.point.x, this.point.y, this.point.r);
         },
     },
     computed: {

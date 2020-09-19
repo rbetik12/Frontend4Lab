@@ -145,12 +145,10 @@ export default {
             }
             context.fill();
             context.stroke();
-            console.log(x, y);
             ({x, y} = this.formatPoints(x, y));
-            console.log(x, y);
             this.sendPoint(x, y)
         },
-        sendPoint(xNormalized, yNormalized) {
+        sendPoint(xNormalized, yNormalized, radius) {
             const requestOptions = {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
@@ -159,7 +157,7 @@ export default {
                 body: JSON.stringify({
                     x: xNormalized,
                     y: yNormalized,
-                    r: this.r
+                    r: radius ? radius : this.r
                 }),
                 credentials: 'include'
             }
