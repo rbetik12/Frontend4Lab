@@ -35,8 +35,6 @@
         <div class="form-error" v-if="loginError">Incorrect login or password!</div>
         <div class="form-success" v-if="successLogin">Logged in successfully!</div>
         <div class="form-sign" v-if="successSignUp">Sign up successfully!</div>
-
-        <router-link to="/main">Main</router-link>
     </b-container>
 </template>
 

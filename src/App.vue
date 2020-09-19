@@ -7,8 +7,9 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto" type="dark">
-                    <b-nav-item>Прикота Виталий Александрович</b-nav-item>
-                    <b-nav-item>P33113</b-nav-item>
+                    <div class="navbar-text">Прикота Виталий Александрович</div>
+                    <div class="navbar-text">P33113</div>
+                    <b-button type="primary" v-on:click="onLogOut">Log out</b-button>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -27,9 +28,21 @@ export default {
     name: 'app',
     components: {
       Test, Form
+    },
+    methods: {
+        onLogOut(evt) {
+            evt.preventDefault();
+
+            sessionStorage.setItem("JSESSIONID", null);
+            this.$router.push("/");
+        }
     }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.navbar-text {
+    color: white;
+    padding: 1em;
+}
 </style>
