@@ -4,7 +4,6 @@ import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueRouter from 'vue-router'
-import Test from "./components/Test.vue";
 import Form from "./components/Form.vue";
 import Main from "./components/Main.vue";
 
@@ -17,7 +16,6 @@ function isAuthenticated() {
 }
 
 const routes = [
-    {path: "/test", component: Test},
     {path: "/", component: Form},
     {
         path: "/main",

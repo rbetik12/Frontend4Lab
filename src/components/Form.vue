@@ -28,7 +28,6 @@
             <b-button type="submit" variant="primary" v-if="signup">Sign up</b-button>
             <b-button type="submit" variant="primary" v-if="!signup">Sign in</b-button>
             <b-button variant="info" v-on:click="signup = !signup">Switch</b-button>
-            <b-button variant="info" v-on:click="onTest">TestServer</b-button>
         </b-form>
 
         <div class="form-error" v-if="signUpError">User already exists!</div>

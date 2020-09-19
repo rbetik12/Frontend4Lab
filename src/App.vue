@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <b-navbar toggleable="lg" type="dark" variant="dark">
-            <b-navbar-brand href="#">Вариант 2528</b-navbar-brand>
+            <b-navbar-brand href="/">Вариант 2528</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -21,14 +21,8 @@
 </template>
 
 <script>
-import Test from "./components/Test.vue";
-import Form from "./components/Form.vue";
-
 export default {
     name: 'app',
-    components: {
-      Test, Form
-    },
     methods: {
         onLogOut(evt) {
             evt.preventDefault();
