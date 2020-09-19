@@ -89,8 +89,12 @@ export default {
     methods: {
         onSubmit(evt) {
             evt.preventDefault();
-            console.log(this.point);
-            this.$refs.graph.sendPoint(this.point.x, this.point.y, this.point.r);
+            const isHit = this.$refs.graph.fits(this.point.x, this.point.y, false);
+            let x = 0;
+            let y = 0;
+            ({x, y} = this.$refs.graph.deformatPoint(this.point.x, this.point.y, this.point.r));
+            this.$refs.graph.drawSinglePoint(x, y, isHit);
+            this.$refs.graph.sendPoint(x, y);
         },
     },
     computed: {

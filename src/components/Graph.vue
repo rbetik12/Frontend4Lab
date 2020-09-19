@@ -10,7 +10,8 @@ export default {
     },
     data() {
         return {
-            address: 'localhost:8090'
+            address: 'localhost:8090',
+            points: null
         }
     },
     methods: {
@@ -120,8 +121,10 @@ export default {
             let isHit = this.fits(x, y);
             this.drawPoint(x, y, isHit);
         },
-        fits(x, y) {
-            ({x, y} = this.formatPoints(x, y));
+        fits(x, y, format = true) {
+            if (format) {
+                ({x, y} = this.formatPoints(x, y));
+            }
             if (x >= 0 && y <= 0 && x <= (this.r / 2) && y >= -this.r)
                 return 'true';
             if (x >= 0 && y >= 0 && y <= (this.r - x) / 2)
@@ -131,6 +134,10 @@ export default {
             return 'false';
         },
         drawPoint(x, y, isGoal) {
+            this.drawSinglePoint(x, y, isGoal);
+            this.sendPoint(x, y)
+        },
+        drawSinglePoint(x, y, isGoal) {
             let canvas = document.getElementById('canvas'),
                 context = canvas.getContext("2d");
             context.beginPath();
@@ -145,8 +152,6 @@ export default {
             }
             context.fill();
             context.stroke();
-            ({x, y} = this.formatPoints(x, y));
-            this.sendPoint(x, y)
         },
         sendPoint(xNormalized, yNormalized, radius) {
             const requestOptions = {
@@ -161,24 +166,41 @@ export default {
                 }),
                 credentials: 'include'
             }
-            console.log(JSON.stringify({
-                x: xNormalized,
-                y: yNormalized,
-                r: Number(this.r)
-            }));
             fetch(`http://${this.address}/backend/api/point/check`, requestOptions)
                 .then(res => {
                     res.text().then(text => {
-                        console.log(text);
                     })
                 });
         },
         formatPoints(x, y) {
             return {x: this.r * (x - 150) / 130, y: this.r * (150 - y) / 130}
+        },
+        deformatPoint(x, y, r) {
+            return {x: (x * 130 / r) + 150, y: -((y * 130 / r) - 150)}
+        },
+        getUserPoints() {
+            const requestOptions = {
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                method: 'GET',
+                credentials: 'include'
+            }
+            fetch(`http://${this.address}/backend/api/point/getUserPoints`, requestOptions)
+                .then(res => {
+                    res.text().then(text => {
+                        const points = JSON.parse(text);
+                        for (const point of points) {
+                            console.log(point.hit);
+                            this.drawSinglePoint(point.x, point.y, point.hit);
+                        }
+                    })
+                });
         }
     },
     mounted() {
         this.drawCanvas();
+        this.getUserPoints();
     },
     watch: {
         r: function (val) {
