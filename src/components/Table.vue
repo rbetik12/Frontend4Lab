@@ -57,6 +57,7 @@ export default {
     },
     mounted() {
       this.fetchTable();
+      this.$root.$on("fetchTable", this.fetchTable);
     }
 }
 </script>

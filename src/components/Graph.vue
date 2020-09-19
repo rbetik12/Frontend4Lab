@@ -171,6 +171,7 @@ export default {
                     res.text().then(text => {
                     })
                 });
+            this.$root.$emit("fetchTable");
         },
         formatPoints(x, y) {
             return {x: this.r * (x - 150) / 130, y: this.r * (150 - y) / 130}
