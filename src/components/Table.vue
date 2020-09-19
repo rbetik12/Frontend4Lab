@@ -30,7 +30,7 @@ export default {
                 method: 'GET',
                 credentials: 'include'
             }
-            fetch(`http://${this.address}/backend/api/point/${this.showYourPoints ? "getUserPoints" : "getAllUsersPoints"}`, requestOptions)
+            fetch(`http://${this.address}/backend/api/point/${!this.showYourPoints ? "getUserPoints" : "getAllUsersPoints"}`, requestOptions)
                 .then(res => {
                     res.text().then(text => {
                         const fetchedPoints = JSON.parse(text);
@@ -40,8 +40,8 @@ export default {
                             let y = 0;
                             ({x, y} = this.formatPoints(fetchedPoint.x, fetchedPoint.y, fetchedPoint.r));
                             let point = {
-                                x: x,
-                                y: y,
+                                x: Math.round((x + Number.EPSILON) * 100) / 100,
+                                y: Math.round((y + Number.EPSILON) * 100) / 100,
                                 r: fetchedPoint.r,
                                 user: fetchedPoint.user.username,
                                 result: fetchedPoint.hit
