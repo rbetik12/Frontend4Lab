@@ -191,7 +191,6 @@ export default {
                     res.text().then(text => {
                         const points = JSON.parse(text);
                         for (const point of points) {
-                            console.log(point.hit);
                             this.drawSinglePoint(point.x, point.y, point.hit);
                         }
                     })

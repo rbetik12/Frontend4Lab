@@ -66,16 +66,20 @@
                 </b-form>
             </b-col>
         </b-row>
+        <b-row>
+            <Table></Table>
+        </b-row>
     </b-container>
 </template>
 
 <script>
 import Graph from "./Graph.vue";
+import Table from "./Table.vue";
 
 export default {
     name: "Main",
     components: {
-        Graph
+        Graph, Table
     },
     data() {
         return {
@@ -120,6 +124,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
