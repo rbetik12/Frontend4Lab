@@ -54,11 +54,11 @@
                             v-model="point.r"
                             type="text"
                             required
-                            placeholder="Enter y in range (-3, 5)"
+                            placeholder="Enter y in range (0, 5)"
                             :state="validateR"
                         ></b-form-input>
                         <b-form-invalid-feedback :state="validateR">
-                            R must be a number in range (-3, 5).
+                            R must be a number in range (0, 5).
                         </b-form-invalid-feedback>
                     </b-form-group>
 
@@ -117,7 +117,7 @@ export default {
         validateR() {
             return !isNaN(parseFloat(this.point.r))
                 && isFinite(this.point.r)
-                && this.point.r > -3
+                && this.point.r > 0
                 && this.point.r < 5;
         }
     }

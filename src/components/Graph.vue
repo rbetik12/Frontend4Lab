@@ -204,7 +204,7 @@ export default {
     },
     watch: {
         r: function (val) {
-            if (val < 5 && val > -3) {
+            if (val < 5 && val > 0) {
                 this.drawCanvas();
             }
         }
