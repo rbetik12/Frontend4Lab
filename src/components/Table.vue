@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             points: [],
-            address: "localhost:8090",
+            address: "localhost:1400",
             thisUserTable: "Your points",
             allUsersTable: "Everyone points",
             showYourPoints: true

@@ -10,7 +10,7 @@ export default {
     },
     data() {
         return {
-            address: 'localhost:8090',
+            address: 'localhost:1400',
             points: null
         }
     },
