@@ -58,7 +58,7 @@ name: "Form",
     methods: {
         onTest(evt) {
             evt.preventDefault();
-            fetch(`http://${this.address}/backend/api/auth/test`).then(res => res);
+            fetch(`http://${this.address}/api/auth/test`).then(res => res);
         },
         onSubmit(evt) {
             evt.preventDefault()
@@ -72,7 +72,7 @@ name: "Form",
             }
             console.log(this.form)
             if (this.signup) {
-                fetch(`http://${this.address}/backend/api/auth/signup`, requestOptions)
+                fetch(`http://${this.address}/api/auth/signup`, requestOptions)
                     .then(res => {
                         if (res.status === 400) {
                             this.signUpError = true;
@@ -88,7 +88,7 @@ name: "Form",
                     })
             }
             else {
-                fetch(`http://${this.address}/backend/api/auth/signin`, requestOptions)
+                fetch(`http://${this.address}/api/auth/signin`, requestOptions)
                     .then(res => {
                         if (res.status === 400) {
                             this.signUpError = false;

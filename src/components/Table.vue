@@ -30,7 +30,7 @@ export default {
                 method: 'GET',
                 credentials: 'include'
             }
-            fetch(`http://${this.address}/backend/api/point/${!this.showYourPoints ? "getUserPoints" : "getAllUsersPoints"}`, requestOptions)
+            fetch(`http://${this.address}/api/point/${!this.showYourPoints ? "getUserPoints" : "getAllUsersPoints"}`, requestOptions)
                 .then(res => {
                     res.text().then(text => {
                         const fetchedPoints = JSON.parse(text);

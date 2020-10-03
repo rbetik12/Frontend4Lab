@@ -166,7 +166,7 @@ export default {
                 }),
                 credentials: 'include'
             }
-            fetch(`http://${this.address}/backend/api/point/check`, requestOptions)
+            fetch(`http://${this.address}/api/point/check`, requestOptions)
                 .then(res => {
                     res.text().then(text => {
                     })
@@ -187,7 +187,7 @@ export default {
                 method: 'GET',
                 credentials: 'include'
             }
-            fetch(`http://${this.address}/backend/api/point/getUserPoints`, requestOptions)
+            fetch(`http://${this.address}/api/point/getUserPoints`, requestOptions)
                 .then(res => {
                     res.text().then(text => {
                         const points = JSON.parse(text);
