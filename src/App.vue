@@ -51,6 +51,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import 'styles/custom.scss';
+
 .navbar-text {
   color: white;
   padding: 1em;

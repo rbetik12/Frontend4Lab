@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
+import './styles/custom.scss';
 import VueRouter from 'vue-router'
 import Form from "./components/Form.vue";
 import Main from "./components/Main.vue";
